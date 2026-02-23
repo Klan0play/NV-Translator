@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NV Translator | Команда KLAN_PLAY</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Кибер-хедер -->
+<div class="cyber-header">
+    <div class="header-container">
+        <div class="team-brand">
+            <!-- Только одна аватарка команды -->
+            <div class="team-avatar">
+                <img src="D:\Users\Григорий\Pictures\фоны(авы)\NV.jpg" 
+                     alt="NanoVault Team"
+                     onerror="this.style.display='none'">
+            </div>
+            
+            <div class="team-logo">
+                <div class="logo-main">
+                    <!-- Убрали второй NV логотип -->
+                    <div class="logo-glow"></div>
+                </div>
+                <div class="team-info">
+                    <!-- Изменили на NanoVault Translator -->
+                    <h1>NanoVault<span class="team-tech">  Team</span></h1>
+                    <div class="team-leader">
+                        <i class="fas fa-crown"></i>
+                        <span class="leader-name">KLAN_PLAY</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="header-stats">
+            <div class="stat-item">
+                <div class="stat-icon">
+                    <i class="fas fa-bolt"></i>
+                </div>
+                <div class="stat-data">
+                    <span class="stat-value">99.8%</span>
+                    <span class="stat-label">Точность</span>
+                </div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-icon">
+                    <i class="fas fa-language"></i>
+                </div>
+                <div class="stat-data">
+                    <span class="stat-value">157</span>
+                    <span class="stat-label">Языков</span>
+                </div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-icon">
+                    <i class="fas fa-brain"></i>
+                </div>
+                <div class="stat-data">
+                    <span class="stat-value">AI 3.0</span>
+                    <span class="stat-label">Нейросеть</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="cyber-line"></div>
+</div>
+
+    <!-- Основной контейнер -->
+    <div class="main-container">
+        <!-- Блок управления переводом -->
+        <div class="control-panel">
+            <div class="panel-header">
+                <h2><i class="fas fa-satellite"></i> Панель перевода NV</h2>
+                <div class="team-badge">
+                    <span class="badge-text">Команда NanoVault</span>
+                    <div class="badge-pulse"></div>
+                </div>
+            </div>
+            
+            <div class="translation-interface">
+                <!-- Выбор языков -->
+                <div class="language-selector">
+                    <div class="lang-box">
+                        <div class="lang-header">
+                            <i class="fas fa-signal"></i>
+                            <h3>Источник</h3>
+                        </div>
+                        <div class="lang-select">
+                            <select id="sourceLang" class="cyber-select">
+                                <option value="auto">Автоопределение</option>
+                                <option value="ru">Русский</option>
+                                <option value="en">Английский</option>
+                                <option value="kk">Казахский</option>
+                                <option value="de">Немецкий</option>
+                                <option value="fr">Французский</option>
+                                <option value="es">Испанский</option>
+                                <option value="zh">Китайский</option>
+                                <option value="ja">Японский</option>
+                            </select>
+                            <div class="select-arrow">
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                        </div>
+                        <div class="lang-code">SRC</div>
+                    </div>
+                    
+                    <div class="swap-container">
+                        <button id="swapLangs" class="swap-button">
+                            <i class="fas fa-exchange-alt"></i>
+                            <div class="swap-glow"></div>
+                        </button>
+                    </div>
+                    
+                    <div class="lang-box">
+                        <div class="lang-header">
+                            <i class="fas fa-bullseye"></i>
+                            <h3>Цель</h3>
+                        </div>
+                        <div class="lang-select">
+                            <select id="targetLang" class="cyber-select">
+                                <option value="en">Английский</option>
+                                <option value="ru">Русский</option>
+                                <option value="kk">Казахский</option>
+                                <option value="de">Немецкий</option>
+                                <option value="fr">Французский</option>
+                                <option value="es">Испанский</option>
+                                <option value="zh">Китайский</option>
+                                <option value="ja">Японский</option>
+                            </select>
+                            <div class="select-arrow">
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                        </div>
+                        <div class="lang-code">TGT</div>
+                    </div>
+                </div>
+                
+                <!-- Поля ввода/вывода -->
+                <div class="translation-area">
+                    <div class="input-panel">
+                        <div class="panel-title">
+                            <i class="fas fa-keyboard"></i>
+                            <span>Ввод текста</span>
+                            <div class="input-controls">
+                                <button id="voiceInput" class="control-btn" title="Голосовой ввод">
+                                    <i class="fas fa-microphone"></i>
+                                </button>
+                                <button id="clearInput" class="control-btn" title="Очистить">
+                                    <i class="fas fa-eraser"></i>
+                                </button>
+                                <button id="pasteText" class="control-btn" title="Вставить">
+                                    <i class="fas fa-paste"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <textarea id="inputText" placeholder="Введите текст для перевода... Максимум 5000 символов" class="cyber-textarea"></textarea>
+                        <div class="panel-footer">
+                            <div class="char-counter">
+                                <span id="charCount">0</span>/5000
+                            </div>
+                            <div class="panel-status">
+                                <i class="fas fa-circle status-ready"></i>
+                                <span>Готов</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="output-panel">
+                        <div class="panel-title">
+                            <i class="fas fa-robot"></i>
+                            <span>Перевод NV AI</span>
+                            <div class="output-controls">
+                                <button id="copyTranslation" class="control-btn" title="Копировать">
+                                    <i class="fas fa-copy"></i>
+                                </button>
+                                <button id="speakTranslation" class="control-btn" title="Озвучить">
+                                    <i class="fas fa-volume-up"></i>
+                                </button>
+                                <button id="saveTranslation" class="control-btn" title="Сохранить">
+                                    <i class="fas fa-download"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div id="outputText" class="cyber-output">
+                            <div class="output-placeholder">
+                                <i class="fas fa-arrow-right"></i>
+                                <p>Перевод появится здесь</p>
+                                <small>Использует нейросеть NanoVault AI</small>
+                            </div>
+                        </div>
+                        <div class="panel-footer">
+                            <div class="translation-stats">
+                                <div class="stat">
+                                    <i class="fas fa-clock"></i>
+                                    <span id="timeTaken">0.00с</span>
+                                </div>
+                                <div class="stat">
+                                    <i class="fas fa-code"></i>
+                                    <span id="charTranslated">0</span> сим.
+                                </div>
+                            </div>
+                            <button id="translateBtn" class="translate-button">
+                                <i class="fas fa-bolt"></i>
+                                <span>Перевести</span>
+                                <div class="btn-glow"></div>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Панель дополнительных функций -->
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-history"></i>
+                </div>
+                <h3>История</h3>
+                <p>Сохраняем все переводы</p>
+                <button id="toggleHistory" class="feature-btn">Показать</button>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-theater-masks"></i>
+                </div>
+                <h3>Стиль</h3>
+                <p>Технологичный дизайн</p>
+                <div class="feature-tag">
+                    <span>NanoVault</span>
+                </div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-brain"></i>
+                </div>
+                <h3>AI 3.0</h3>
+                <p>Нейросеть команды NV</p>
+                <div class="ai-badge">
+                    <span>KLAN_PLAY</span>
+                </div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-cogs"></i>
+                </div>
+                <h3>Настройки</h3>
+                <p>Персонализация</p>
+                <button id="showSettings" class="feature-btn">Открыть</button>
+            </div>
+        </div>
+        
+        <!-- Блок информации о команде -->
+        <div class="team-section">
+            <div class="team-card">
+                <div class="team-header">
+                    <h2><i class="fas fa-users"></i> Команда разработчиков</h2>
+                    <div class="team-tag">NanoVault</div>
+                </div>
+                
+<div class="team-members">
+    <!-- Моя аватарка -->
+    <div class="member-card leader">
+        <div class="member-avatar">
+            <img src="D:\Users\Григорий\Pictures\фоны(авы)\b8a109df-9d87-422a-a90f-d91785e1ea03.jpg" 
+                 alt="KLAN_PLAY" 
+                 class="avatar-image"
+                 onerror="this.style.display='none'">
+            <div class="avatar-fallback">KP</div>
+        </div>
+        <div class="member-info">
+            <h3>KLAN_PLAY</h3>
+            <p class="member-role">Лидер команды</p>
+            <p class="member-desc">Основатель NanoVault • Full-Stack</p>
+        </div>
+        <div class="member-badge">
+            <i class="fas fa-crown"></i>
+        </div>
+    </div>
+    
+    <!-- Аватарка команды -->
+    <div class="member-card">
+        <div class="member-avatar">
+            <img src="D:\Users\Григорий\Pictures\фоны(авы)\NV.jpg" 
+                 alt="NanoVault Team" 
+                 class="avatar-image"
+                 onerror="this.style.display='none'">
+            <div class="avatar-fallback">NV</div>
+        </div>
+        <div class="member-info">
+            <h3>NanoVault Team</h3>
+            <p class="member-role">Команда разработки</p>
+            <p class="member-desc">AI • Web </p>
+        </div>
+    </div>
+</div>
+                
+                <div class="team-tech">
+                    <h4><i class="fas fa-microchip"></i> Технологии</h4>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Neural AI</span>
+                        <span class="tech-tag">Quantum Translate</span>
+                        <span class="tech-tag">Real-time</span>
+                        <span class="tech-tag">Cloud</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Блок истории -->
+            <div id="historyPanel" class="history-panel hidden">
+                <div class="history-header">
+                    <h3><i class="fas fa-database"></i> История переводов</h3>
+                    <button id="clearHistory" class="clear-btn">Очистить</button>
+                </div>
+                <div id="historyList" class="history-list">
+                    <div class="history-empty">
+                        <i class="fas fa-server"></i>
+                        <p>База данных пуста</p>
+                        <small>Переводы будут сохраняться здесь</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Футер -->
+<footer class="cyber-footer">
+    <div class="footer-container">
+        <div class="footer-brand">
+            <!-- Аватарка команды -->
+            <div class="footer-avatar">
+                <img src="D:\Users\Григорий\Pictures\фоны(авы)\NV.jpg" 
+                     alt="NanoVault Team"
+                     onerror="this.style.display='none'">
+            </div>
+            
+            <!-- Только текст, без квадрата NV -->
+            <div class="footer-info">
+                <h3>NanoVault Team</h3>
+                <p class="footer-desc">Продвинутый AI переводчик от команды KLAN_PLAY</p>
+            </div>
+        </div>
+        
+        <div class="footer-copyright">
+            <p>© 2024 NanoVault Team. Все права защищены.</p>
+            <p class="developer-credit">Разработано: <strong>KLAN_PLAY</strong> и командой <strong>NanoVault</strong></p>
+            <div class="footer-tech">
+                <span class="tech-item">v3.2.1</span>
+                <span class="tech-item">AI Powered</span>
+                <span class="tech-item">Secure</span>
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <!-- Модальное окно настроек -->
+    <div id="settingsModal" class="modal hidden">
+        <div class="modal-content cyber-modal">
+            <div class="modal-header">
+                <h2><i class="fas fa-sliders-h"></i> Настройки системы</h2>
+                <button id="closeSettings" class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="setting-group">
+                    <h3><i class="fas fa-palette"></i> Внешний вид</h3>
+                    <div class="setting-item">
+                        <span>Тема интерфейса</span>
+                        <select id="themeSelect" class="cyber-select">
+                            <option value="dark">Кибер-темная</option>
+                            <option value="light">Светлая</option>
+                            <option value="neon">Неоновая</option>
+                        </select>
+                    </div>
+                    <div class="setting-item">
+                        <span>Размер текста</span>
+                        <input type="range" id="textSize" min="12" max="20" value="16" class="cyber-slider">
+                    </div>
+                </div>
+                
+                <div class="setting-group">
+                    <h3><i class="fas fa-user-shield"></i> Профиль</h3>
+                    <div class="setting-item">
+                        <span>Имя пользователя</span>
+                        <input type="text" value="KLAN_PLAY" disabled class="cyber-input">
+                    </div>
+                    <div class="setting-item">
+                        <span>Команда</span>
+                        <div class="team-display">
+                            <span class="team-badge">NanoVault</span>
+                            <span class="team-role">Лидер</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="modal-footer">
+                    <button id="saveSettings" class="modal-btn primary">Сохранить</button>
+                    <button id="resetSettings" class="modal-btn">Сбросить</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Уведомления -->
+    <div id="notification" class="notification hidden">
+        <div class="notification-content">
+            <i class="fas fa-info-circle"></i>
+            <span id="notificationText"></span>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
